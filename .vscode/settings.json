@@ -1,0 +1,8 @@
+{
+  // Tailwind CSS v4 uses @theme, @source, @utility etc. — not standard CSS.
+  // This suppresses the false "Unknown at rule" warning from VS Code's CSS linter.
+  "css.lint.unknownAtRules": "ignore",
+
+  // Tell Tailwind IntelliSense where the v4 CSS entry point lives.
+  "tailwindCSS.experimental.configFile": "src/app/globals.css"
+}

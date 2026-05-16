@@ -94,7 +94,7 @@ export default function WhyChooseUs() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Header */}
+        {/* Header — uses transition (no stagger), safe */}
         <div
           className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -119,13 +119,26 @@ export default function WhyChooseUs() {
           {features.map((f, i) => (
             <article
               key={i}
-              style={{ transitionDelay: `${i * 80}ms` }}
-              className={`
+              /*
+               * KEY FIX:
+               * - Entrance: driven by CSS @keyframes `cardReveal` with animationDelay.
+               *   This keeps the stagger ONLY on the one-time entrance animation.
+               * - Hover: driven by `transition-*` classes with NO transitionDelay,
+               *   so every card responds instantly and identically on hover.
+               */
+              style={
+                inView
+                  ? {
+                      animation: `cardReveal 0.6s cubic-bezier(0.16,1,0.3,1) both`,
+                      animationDelay: `${i * 80}ms`,
+                    }
+                  : { opacity: 0 }
+              }
+              className="
+                feature-card
                 group relative p-7 rounded-3xl bg-white border border-slate-100
-                shadow-sm hover:shadow-xl transition-all duration-400 ease-out
-                hover:-translate-y-1.5 hover:border-slate-200
-                ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
-              `}
+                shadow-sm cursor-default
+              "
             >
               {/* Icon */}
               <div className={`w-12 h-12 rounded-2xl ${f.bg} border flex items-center justify-center mb-5 ${f.color} group-hover:scale-110 transition-transform duration-300`}>
@@ -136,8 +149,8 @@ export default function WhyChooseUs() {
               <h3 className="text-lg font-bold text-primary mb-2">{f.title}</h3>
               <p className="text-sm text-slate-500 leading-relaxed">{f.body}</p>
 
-              {/* Hover accent line */}
-              <div className="absolute bottom-0 left-6 right-6 h-0.5 rounded-full bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left" />
+              {/* Hover accent line — uses its own transition, no delay */}
+              <div className="absolute bottom-0 left-6 right-6 h-0.5 rounded-full bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </article>
           ))}
         </div>
@@ -148,11 +161,11 @@ export default function WhyChooseUs() {
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
-          <p className="text-xs text-slate-400 uppercase tracking-widest font-semibold">Recognised & Approved by</p>
+          <p className="text-xs text-slate-400 uppercase tracking-widest font-semibold">Recognised &amp; Approved by</p>
           {['UGC', 'AICTE', 'NAAC A++', 'NBA', 'AIU', 'ISO 9001:2015'].map((badge) => (
             <span
               key={badge}
-              className="px-4 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs font-bold text-slate-600 hover:border-accent/40 hover:text-primary transition-all"
+              className="px-4 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs font-bold text-slate-600 hover:border-accent/40 hover:text-primary transition-all duration-300"
             >
               {badge}
             </span>

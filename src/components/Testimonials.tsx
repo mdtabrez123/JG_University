@@ -271,7 +271,7 @@ export default function Testimonials() {
                 <button
                   aria-label="Previous testimonial"
                   onClick={() => { goTo(active - 1); setPaused(true); }}
-                  className="w-10 h-10 rounded-xl border border-slate-200 bg-white flex items-center justify-center hover:border-accent hover:text-accent transition-all duration-200 shadow-sm"
+                  className="w-10 h-10 rounded-xl border border-slate-200 bg-white text-slate-600 flex items-center justify-center hover:border-accent hover:text-accent transition-all duration-200 shadow-sm"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -280,7 +280,7 @@ export default function Testimonials() {
                 <button
                   aria-label="Next testimonial"
                   onClick={() => { goTo(active + 1); setPaused(true); }}
-                  className="w-10 h-10 rounded-xl border border-slate-200 bg-white flex items-center justify-center hover:border-accent hover:text-accent transition-all duration-200 shadow-sm"
+                  className="w-10 h-10 rounded-xl border border-slate-200 bg-white text-slate-600 flex items-center justify-center hover:border-accent hover:text-accent transition-all duration-200 shadow-sm"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />

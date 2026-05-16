@@ -46,7 +46,7 @@ export default function Navbar() {
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           scrolled
             ? 'glass-nav shadow-[0_4px_32px_rgba(0,0,0,0.35)]'
-            : 'bg-transparent'
+            : 'bg-gradient-to-b from-black/40 to-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

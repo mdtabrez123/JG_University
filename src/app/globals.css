@@ -39,10 +39,9 @@ body {
 
 /* ── Glassmorphism ─────────────────────────────────────────────────────────── */
 .glass-nav {
-  background: rgba(0, 15, 40, 0.65);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  background: rgba(0, 15, 40, 0.80);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
 .glass-nav-light {
@@ -140,3 +139,32 @@ body {
   animation: slideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ── Why Choose Us: card entrance & hover ──────────────────────────────────── */
+/*
+ * Entrance uses @keyframes + animationDelay (stagger) so the delay
+ * is ONLY applied once. The hover uses a separate `transition` with
+ * NO delay — every card responds instantly and identically on hover.
+ */
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.feature-card {
+  transition:
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.28s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0, 33, 71, 0.12);
+  border-color: #e2e8f0;
+}
